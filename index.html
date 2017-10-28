@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click on the Puppies!</title>
+  
+  <style type="text/css">
+
+  .puppy-image {
+      width: 300px;
+      height: 300px;
+    }
+
+ 
+  </style>
+
+</head>
+<body>
+
+  <h1>Number to Guess: <div id="number-to-guess"></div></h1>
+
+  <h2> </h2>
+
+  <div id="puppies"></div>
+
+  
+
+
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+
+  
+  // Variables
+
+  var targetNumber =30;
+
+  var counter = 0;
+
+  var numberOptions = [6,8,9,10];
+
+  var winCount = 0;
+
+  var lossCount = 0;
+
+ 
+
+  
+
+  //Functions
+
+  $("#number-to-guess").text(targetNumber);
+
+
+  for (var i = 0; i < numberOptions.length; i++) {
+
+   var imagePuppies = $("<img>");
+
+
+  imagePuppies.addClass("puppy-image");
+
+
+  imagePuppies.attr("src", "https://static.pexels.com/photos/248307/pexels-photo-248307.jpeg");
+
+
+  imagePuppies.attr("data-puppy", numberOptions[i]);
+   
+
+    $("#puppies").append(imagePuppies);
+  }
+
+ 
+  
+//Start of game
+
+  $(".puppy-image").on("click", function() {
+
+  
+    
+     var puppyValue = ($(this).attr("data-puppy"));
+     puppyValue = parseInt(puppyValue);
+
+     counter += puppyValue;
+
+ 
+     alert("New score: " + counter);
+
+     if (counter === targetNumber) {
+       alert("You win!");
+       winCount ++;
+       $('<h2>').append(winCount);
+
+     }
+
+     else if (counter >= targetNumber) {
+       alert("You lose!!");
+       lossCount ++;
+     }
+
+  });
+
+  </script>
+</body>
+</html>
